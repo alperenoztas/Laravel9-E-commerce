@@ -20,7 +20,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
-
+    @livewireStyles
 </head>
 <body>
     <div id="app">
@@ -82,5 +82,6 @@
             @yield('content')
         </main>
     </div>
+    @livewireScripts
 </body>
 </html>
