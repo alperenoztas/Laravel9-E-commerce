@@ -60,7 +60,8 @@
     <script src="{{ asset('admin/js/hoverable-collapse.js') }}"></script>
     <script src="{{ asset('admin/js/template.js') }}"></script>
     <!-- endinject -->
-
+    <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+    <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}" defer></script>
     <!-- Custom js for this page-->
     <script src="{{ asset('admin/js/dashboard.js') }}"></script>
     <script src="{{ asset('admin/js/data-table.js') }}"></script>
