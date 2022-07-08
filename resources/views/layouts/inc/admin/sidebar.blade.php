@@ -20,25 +20,25 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
+        <a class="nav-link" href="#">
           <i class="mdi mdi-view-headline menu-icon"></i>
           <span class="menu-title">Form elements</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/charts/chartjs.html">
+        <a class="nav-link" href="#">
           <i class="mdi mdi-chart-pie menu-icon"></i>
           <span class="menu-title">Charts</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/tables/basic-table.html">
+        <a class="nav-link" href="#">
           <i class="mdi mdi-grid-large menu-icon"></i>
           <span class="menu-title">Tables</span>
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="pages/icons/mdi.html">
+        <a class="nav-link" href="#">
           <i class="mdi mdi-emoticon menu-icon"></i>
           <span class="menu-title">Icons</span>
         </a>
