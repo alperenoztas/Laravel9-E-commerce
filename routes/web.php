@@ -27,10 +27,12 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
 
     //Category Routes
     Route::controller(CategoryController::class)->group(function(){
-        Route::get('/category','index');
-        Route::get('/category/create','create');
-        Route::post('/category','store');
+        Route::get('/category','index')->name('category.index');
+        Route::get('/category/create','create')->name('category.create');
+        Route::post('/category','store')->name('category.store');
         Route::get('/category/{category}/edit','edit')->name('category.edit');
-        Route::put('category/{category}','update');
+        Route::put('category/{category}','update')->name('category.update');
     });
+
+    Route::get('/brands',App\Http\Livewire\Admin\Brand\Index::class)->name('brands.index');
 });
