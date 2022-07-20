@@ -46,11 +46,12 @@ class ProductController extends Controller
         if($request->hasFile('image')){
             $uploadPath = 'uploads/products/';
 
+            $i = 1;
             foreach($request->file('image') as $imageFile){
                 $extension = $imageFile->getClientOriginalExtension();
-                $fileName = time().'.'.$extension;
+                $fileName = time().$i++.'.'.$extension;
                 $imageFile->move($uploadPath,$fileName);
-                $finalImagePathName = $uploadPath.'-'.$fileName;
+                $finalImagePathName = $uploadPath.$fileName;
 
                 $product->productImages()->create([
                     'product_id' => $product->id,
