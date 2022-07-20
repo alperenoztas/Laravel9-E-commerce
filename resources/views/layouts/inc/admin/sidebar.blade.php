@@ -25,9 +25,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ url('admin/products/create') }}">
                 <i class="mdi mdi-emoticon menu-icon"></i>
-                <span class="menu-title">Icons</span>
+                <span class="menu-title">Add Product</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ url('admin/products') }}">
+                <i class="mdi mdi-emoticon menu-icon"></i>
+                <span class="menu-title">View Products</span>
             </a>
         </li>
         <li class="nav-item">
