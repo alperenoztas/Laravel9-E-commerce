@@ -14,7 +14,7 @@
                 </h3>
             </div>
             <div class="card-body">
-                <table class="table table-bordered table-striped">
+                <table class="table table-bordered table-striped text-center">
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -30,14 +30,20 @@
                         @forelse ($products as $product)
                         <tr>
                             <td>{{ $product->id }}</td>
-                            <td>{{ $product->categoty_id }}</td>
+                            <td>
+                                @if($product->category)
+                                    {{ $product->category->name }}
+                                @else
+                                    No Category
+                                @endif
+                            </td>
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->selling_price }}</td>
                             <td>{{ $product->quantity }}</td>
                             <td>{{ $product->status == '1' ? 'Hidden' : 'Visible' }}</td>
                             <td>
-                                <a href="" class="btn btn-success">Edit</a>
-                                <a href="" class="btn btn-danger">Delete</a>
+                                <a href="{{ url('admin/products/'.$product->id.'/edit') }}" class="btn btn-sm btn-success">Edit</a>
+                                <a href="{{ url('admin/products/'.$product->id.'/delete') }}" onclick="return confirm('Are you sure deleting this data')" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                         @empty
