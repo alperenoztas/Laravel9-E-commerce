@@ -15,9 +15,12 @@ use App\Http\Requests\ProductFormRequest;
 
 class ProductController extends Controller
 {
-    public function index(){
+    public function index()
+    {
+
         $products = Product::all();
         return view('admin.products.index',compact('products'));
+
     }
 
     public function create(){
