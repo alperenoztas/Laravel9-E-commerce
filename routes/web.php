@@ -36,7 +36,7 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::put('category/{category}','update')->name('category.update');
     });
     Route::controller(ProductController::class)->group(function(){
-        
+
         Route::get('/products','index')->name('products.index');
         Route::get('/products/create','create')->name('products.create');
         Route::post('products','store')->name('products.store');
@@ -44,6 +44,9 @@ Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
         Route::put('/products/{product}','update')->name('products.update');
         Route::get('products/{product_id}/delete','destroy')->name('products.destroy');
         Route::get('product-image/{product_image_id}/delete','destroyImage')->name('product-image.destroyImage');
+
+        Route::post('product-color/{prod_color_id}','updateProdColorQty')->name('product-color.updateProdColorQty');
+        Route::get('product-color/{prod_color_id}/delete','deleteProdColor')->name('product-color.deleteProdColor');
 
     });
 
