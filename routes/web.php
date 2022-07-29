@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ColorController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
 
@@ -26,6 +27,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
     Route::get('dashboard',[App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+
+    Route::controller(SliderController::class)->group(function(){
+        Route::get('sliders','index')->name('sliders.index');
+        Route::get('sliders/create','create')->name('sliders.create');
+        Route::post('sliders/create','store')->name('sliders.store');
+
+    });
 
     //Category Routes
     Route::controller(CategoryController::class)->group(function(){
