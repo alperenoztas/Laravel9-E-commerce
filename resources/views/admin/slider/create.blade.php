@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-md-12">
         @if(session('msg'))
-            <div class="alerd alert-success">{{ session('msg') }}</div>
+            <div class="alert alert-success">{{ session('msg') }}</div>
         @endif
         <div class="card">
             <div class="card-header">
@@ -18,7 +18,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="">Title</label>
-                        <input type="text" name="name" id="" class="form-control">
+                        <input type="text" name="title" id="" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="">Description</label>
