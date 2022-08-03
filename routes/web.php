@@ -25,6 +25,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 Auth::routes();
 
 Route::get('/',[FrontendController::class, 'index'])->name('frontend.index');
+Route::get('/collections',[FrontendController::class, 'categories'])->name('frontend.categories');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
