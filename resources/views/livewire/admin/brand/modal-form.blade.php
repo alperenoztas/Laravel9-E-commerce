@@ -9,6 +9,18 @@
                     aria-label="Close"></button>
             </div>
             <form wire:submit.prevent="storeBrand">
+                <div class="mb-3">
+                    <label>Select Category</label>
+                    <select wire:model.defer="category_id" class="form-control" required>
+                        <option value="">Select Category</option>
+                        @foreach ($categories as $cateItem)
+                            <option value="{{ $cateItem->id }}">{{ $cateItem->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
                 <div class="modal-body">
                     <div class="mb-3">
                         <label>Brand Name</label>
@@ -61,6 +73,18 @@
             <div wire:loading.remove>
                 <form wire:submit.prevent="updateBrand">
                     <div class="modal-body">
+                        <div class="mb-3">
+                            <label>Select Category</label>
+                            <select wire:model.defer="category_id" class="form-control" required>
+                                <option value="">Select Category</option>
+                                @foreach ($categories as $cateItem)
+                                    <option value="{{ $cateItem->id }}">{{ $cateItem->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('category_id')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
                         <div class="mb-3">
                             <label>Brand Name</label>
                             <input type="text" wire:model.defer='name' class="form-control">
