@@ -15,7 +15,7 @@
                     <div class="product-view">
                         <h4 class="product-name">
                             {{ $product->name }}
-                            <label class="label-stock bg-success">In Stock</label>
+
                         </h4>
                         <hr>
                         <p class="product-path">
@@ -26,12 +26,31 @@
                             <span class="original-price">${{ $product->original_price }}</span>
                         </div>
                         <div>
+                            @if($product->productColors->count() > 0)
+                                @if ($product->productColors)
+                                    @foreach ($product->productColors as $colorItem)
+                                        {{-- <input type="radio" name="colorSelection" value="{{ $colorItem->id }}"/> {{ $colorItem->color->name }} --}}
+                                        <label class="colorSelectionLabel" style="background-color: {{ $colorItem->color->code }}" wire:click="colorSelected({{ $colorItem->id }})">
+                                            {{ $colorItem->color->name }}
+                                        </label>
+                                    @endforeach
+                                @endif
+                                <div>
+                                @if($this->prodColorSelectedQuantity == 'out of stock')
+                                    <label class="btn btn-sm py-1 mt-2 text-white bg-danger">Out of Stock</label>
+                                @elseif ($this->prodColorSelectedQuantity > 0)
+                                    <label class="btn btn-sm py-1 mt-2 text-white bg-success">In Stock</label>
+                                @endif
+                                </div>
 
-                            @if ($product->productColors)
-                                @foreach ($product->productColors as $colorItem)
-                                    <input type="radio" name="colorSelection" value="{{ $colorItem->id }}"/> {{ $colorItem->color->name }}
-                                @endforeach
+                            @else
+                                @if ($product->quantity)
+                                    <label class="btn btn-sm py-1 mt-2 text-white bg-success">In Stock</label>
+                                @else
+                                    <label class="btn btn-sm py-1 mt-2 text-white bg-danger">Out of Stock</label>
+                                @endif
                             @endif
+
 
                         </div>
                         <div class="mt-2">
