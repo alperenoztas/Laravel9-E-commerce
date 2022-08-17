@@ -72,7 +72,8 @@
                                 <span wire:loading.remove>
                                     <i class="fa fa-heart"> </i> Add To Wishlist
                                 </span>
-                                <span wire:loading wire:target="addToWishList">Adding...</span>
+                                <span wire:loading wire:target="addToWishList">
+                                    <i class="fa fa-spinner fa-spin"></i>
                             </button>
                         </div>
                         <div class="mt-3">
