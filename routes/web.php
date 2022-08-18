@@ -31,6 +31,11 @@ Route::get('/collections/{category_slug}',[FrontendController::class, 'products'
 Route::get('/collections/{category_slug}/{product_slug}',[FrontendController::class, 'productView'])->name('frontend.productView');
 Route::get('wishlist',[WishlistController::class, 'index'])->name('wishlist.index');
 
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('wishlist',[WishlistController::class, 'index'])->name('wishlist.index');
+});
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::prefix('admin')->middleware(['auth','isAdmin'])->group(function(){
