@@ -87,7 +87,7 @@ class View extends Component
 
                         if(Cart::where('user_id',auth()->user()->id)
                                 ->where('product_id',$productId)
-                                ->where('product_color_id',$this->producrColorId)
+                                ->where('product_color_id',$this->productColorId)
                                 ->exists())
                         {
                             $this->dispatchBrowserEvent('message',[
@@ -111,6 +111,8 @@ class View extends Component
                                     'product_color_id' => $this->productColorId,
                                     'quantity' => $this->quantityCount,
                                 ]);
+
+                                $this->emit('CartAddedUpdated');
 
                                 $this->dispatchBrowserEvent('message',[
                                     'message' => 'Product added to cart',
@@ -164,6 +166,8 @@ class View extends Component
                                     'product_id' => $productId,
                                     'quantity' => $this->quantityCount,
                                 ]);
+
+                                $this->emit('CartAddedUpdated');
 
                                 $this->dispatchBrowserEvent('message',[
                                     'message' => 'Product added to cart',
