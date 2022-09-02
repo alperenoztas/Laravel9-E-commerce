@@ -15,4 +15,8 @@ class ExampleTest extends TestCase
     {
         $this->assertTrue(true);
     }
+    
+    public function test_user_that_named(){
+        $this->assertTrue(App\Models\User::all()->count"());   
+    }
 }
