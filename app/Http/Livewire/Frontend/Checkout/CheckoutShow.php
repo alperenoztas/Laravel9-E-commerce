@@ -50,6 +50,12 @@ class CheckoutShow extends Component
                 'quantity' => $cart->quantity,
                 'price' => $cart->product->selling_price,
             ]);
+
+            if($cart->product_color_id != NULL){
+                $cart->productColor()->where('id',$cart->product_color_id)->decrement('quantity',$cart->quantity);
+            }else{
+                $cart->product()->where('id',$cart->product_id)->decrement('quantity',$cart->quantity);
+            }
         }
 
         return $order;
@@ -61,6 +67,9 @@ class CheckoutShow extends Component
         $codOrder = $this->placeOrder();
         if($codOrder){
             Cart::where('user_id',auth()->user()->id)->delete();
+
+            session()->flash('message','Your order has been placed successfully');
+
             $this->dispatchBrowserEvent('message',[
                 'message' => 'Order Placed Successfully',
                 'type' => 'success',
@@ -80,10 +89,12 @@ class CheckoutShow extends Component
     }
 
     public function totalProductAmount(){
+
+        $this->totalProductAmount = 0;
         $this->carts = Cart::where('user_id',auth()->user()->id)->get();
 
         foreach($this->carts as $cart){
-            $this->totalProductAmount = $cart->product->selling_price * $cart->quantity;
+            $this->totalProductAmount += $cart->product->selling_price * $cart->quantity;
         }
         return $this->totalProductAmount;
     }
