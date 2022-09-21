@@ -10,10 +10,18 @@ use Illuminate\Support\Str;
 
 class CheckoutShow extends Component
 {
-
     public $carts,$totalProductAmount = 0;
 
-    public $fullname,$email,$phone,$pincode,$address,$payment_mode = NULL,$payment_id = NULL;
+    public $fullname,$email,$phone,$pincode,$address;
+    public $payment_mode = NULL;
+
+    protected $listeners = [
+        'validationForAll'
+    ];
+
+    public function validationForAll(){
+        $this->validate();
+    }
 
     public function rules(){
         return [

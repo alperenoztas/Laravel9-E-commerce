@@ -50,6 +50,7 @@
         })
     </script>
     @livewireScripts
+    @stack('scripts')
 
 </body>
 
